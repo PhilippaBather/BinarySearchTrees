@@ -17,7 +17,7 @@ public class LinkedList {
         addItem(node);
     }
 
-    public void addItem(ListNode newNode) {
+    private void addItem(ListNode newNode) {
         //if head of list is null, make head refer to the item to be added
         if (head == null) {
             head = newNode;

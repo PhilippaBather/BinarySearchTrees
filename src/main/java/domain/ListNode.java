@@ -52,7 +52,7 @@ public class ListNode extends ListItem {
             if (currentNode.next != null) {
                 return removeNode((ListNode) currentNode.next, item);
             } else {
-                return false;
+                return false;   // item not found
             }
         } else {                // item found
             if (currentNode.next != null) {
