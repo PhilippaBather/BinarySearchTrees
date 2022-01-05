@@ -18,7 +18,7 @@ public class Main {
         list.printLinkedList();
         System.out.println();
 
-        /*
+
         System.out.println(list.remove("Sydney") ? "Item removed" :"Item not found");
         System.out.println();
         list.printLinkedList();

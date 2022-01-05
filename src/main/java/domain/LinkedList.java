@@ -12,6 +12,12 @@ public class LinkedList {
 
     // methods
 
+    /**
+     * Method adds a new item in alphabetical order to the linked list.
+     * Duplicates are not permitted.
+     * @param value String value of item to be added.
+     * @return boolean
+     */
     public boolean addItem(String value) {
         ListItem newNode = new ListNode(value);
         ListItem traversal = this.head;
@@ -46,12 +52,44 @@ public class LinkedList {
         return true;
     }
 
-
-    /*
+    /**
+     * Helper method calling private remove method
+     * @param item String value to be removed
+     * @return boolean
+     */
     public boolean remove(String item) {
-        return head.removeNode(item);
-    } */
+        return remove(this.head, item);
+    }
 
+    /**
+     * Recursive function to remove node from the LinkedList.
+     * @param currentNode traversal node starting from head (root).
+     * @param item String value to be removed
+     * @return boolean
+     */
+    private boolean remove(ListItem currentNode, String item) {
+        if (item.compareTo((String) currentNode.value) < 0) {
+            return false;       // item not found
+        } else if (item.compareTo((String) currentNode.value) > 0) {
+            if (currentNode.next != null) {
+                return remove(currentNode.next, item);
+            } else {
+                return false;   // item not found
+            }
+        } else {                // item found
+            if (currentNode.next != null) {
+                currentNode.value = currentNode.moveToNextItem().value;
+                currentNode.next = currentNode.moveToNextItem().next;
+            } else {
+                currentNode.moveToPreviousItem().setNextItem(null);
+            }
+            return true;
+        }
+    }
+
+    /**
+     * Method to print the ordered linked list.
+     */
     public void printLinkedList() {
         ListItem traversal = this.head;
         boolean exit = false;
@@ -63,6 +101,5 @@ public class LinkedList {
                 exit = true;
             }
         }
-        //head = returnToHead();
     }
 }
