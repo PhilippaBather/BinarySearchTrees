@@ -3,7 +3,7 @@ package domain;
 public class BinarySearchTree {
 
     // member fields
-    BSTNode root;
+    ListItem root;
 
     // constructor
 
@@ -27,45 +27,50 @@ public class BinarySearchTree {
      * @param value of String to be added to a new node
      * @return boolean
      */
-    private boolean addRecursively(BSTNode currentNode, String value) {
+    private boolean addRecursively(ListItem currentNode, String value) {
         if (value.compareTo((String) currentNode.getValue()) < 0) {
-                if (currentNode.previous == null) {
-                    currentNode.setPreviousItem(new BSTNode(value));
-                } else {
-                    return addRecursively((BSTNode) currentNode.previous, value);
-                }
-            } else if (value.compareTo((String) currentNode.getValue()) > 0) {
-                if (currentNode.next == null) {
-                    currentNode.setNextItem(new BSTNode(value));
-                } else {
-                    return addRecursively((BSTNode) currentNode.next, value);
-                }
+            if (currentNode.previous == null) {
+                currentNode.setPreviousItem(new BSTNode(value));
             } else {
-                System.out.println("Duplicates not permitted; " + value + " already exists.");
-
+                return addRecursively(currentNode.previous, value);
             }
+        } else if (value.compareTo((String) currentNode.getValue()) > 0) {
+            if (currentNode.next == null) {
+                currentNode.setNextItem(new BSTNode(value));
+            } else {
+                return addRecursively(currentNode.next, value);
+            }
+        } else {
+            System.out.println("Duplicates not permitted; " + value + " already exists.");
+
+        }
         return false;
     }
 
-    // TODO finish
+
+    /**
+     * Removes node that contains a value matching that provided.
+     * Invokes the method within the BSTNode class.
+     * @param value String value of item to be removed
+     * @return boolean
+     */
     public boolean removeNode(String value) {
 
         if (this.root == null) {
             System.out.println("The binary search tree is empty.");
             return false;
         } else {
-            return root.removeNode(value, null);
+            return ((BSTNode) root).removeNode(value, null);
         }
     }
 
     /**
      * Public facing method that handles
-     * @param root head of Binary Search Tree
      * @param value to be searched for
-     * @return
+     * @return boolean
      */
     public boolean findNode(String value) {
-        BSTNode itemSearched = search(this.root, value);                 // search from root     // TODO check functioning
+        ListItem itemSearched = search(this.root, value);
 
         if (itemSearched == null) {
             System.out.println(value + " not found within list.");
@@ -83,16 +88,16 @@ public class BinarySearchTree {
      * @param value of String to be matched
      * @return BST Node to caller method.
      */
-    private BSTNode search(BSTNode currentNode, String value) {
+    private ListItem search(ListItem currentNode, String value) {
         if (currentNode == null || currentNode.value.equals(value)) {
             return currentNode;
         }
 
         if (value.compareTo((String) currentNode.getValue()) < 0) {
-            return search((BSTNode) currentNode.previous, value);
+            return search(currentNode.previous, value);
         }
 
-        return search((BSTNode) currentNode.next, value);
+        return search(currentNode.next, value);
     }
 
     /**
@@ -100,20 +105,20 @@ public class BinarySearchTree {
      * Method invoked prints the Binary Search Tree in order.
      */
     public void inOrder() {
-        inOrder(root);
+        inOrder(this.root);
     }
 
     /**
      * Recursive method that prints the Binary Search Tree
      * in alphabetical order to the console.
-     * @param node
+     * @param node traversed
      */
-    private void inOrder(BSTNode node) {
+    private void inOrder(ListItem node) {
         if (node == null) {
             return;
         }
-        inOrder((BSTNode) node.previous);
+        inOrder(node.previous);
         System.out.println(node.value);
-        inOrder((BSTNode) node.next);
+        inOrder(node.next);
     }
 }

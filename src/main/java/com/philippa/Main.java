@@ -5,7 +5,7 @@ import domain.*;
 public class Main {
 
     public static void main(String[] args) {
-        /*LinkedList list = new LinkedList();     // create 'linked list' to be populated
+        LinkedList list = new LinkedList();     // create 'linked list' to be populated
 
         String stringData = "Darwin Adelaide Atherton Canberra Perth Melbourne Canberra Adelaide Sydney Canberra";
         String[] data = stringData.split(" ");
@@ -28,13 +28,12 @@ public class Main {
         System.out.println();
         list.printLinkedList();
 
-        */
         BinarySearchTree bst = new BinarySearchTree();
-        String stringData = "Darwin Adelaide Atherton Canberra Perth Melbourne Canberra Adelaide Sydney Canberra";
+        //String stringData = "Darwin Adelaide Atherton Canberra Perth Melbourne Canberra Adelaide Sydney Canberra";
 
         if (!stringData.isEmpty()) {
 
-            String[] data = stringData.split(" ");
+            data = stringData.split(" ");
             // create new item with value set to the string s
             for (String s : data) {
                 bst.addNode(s);
@@ -43,6 +42,8 @@ public class Main {
 
         System.out.println();
         bst.inOrder();
+        bst.findNode("Perth");
+        bst.findNode("Storrington");
         System.out.println("\nAdelaide to be removed.");
         bst.removeNode("Adelaide");
         System.out.println();

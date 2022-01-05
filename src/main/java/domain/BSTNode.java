@@ -76,4 +76,12 @@ public class BSTNode extends ListItem {
         return ((BSTNode) this.previous).findSuccessor(); // left child of parent successor used to invoke method
     }
 
+    @Override
+    public String toString() {
+        return "BSTNode{" +
+                "next=" + next +
+                ", previous=" + previous +
+                ", value=" + value +
+                '}';
+    }
 }
