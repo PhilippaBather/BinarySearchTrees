@@ -65,7 +65,7 @@ public class BinarySearchTree {
      * @return
      */
     public boolean findNode(String value) {
-        BSTNode itemSearched = search(root, value);                 // search from root     // TODO check functioning
+        BSTNode itemSearched = search(this.root, value);                 // search from root     // TODO check functioning
 
         if (itemSearched == null) {
             System.out.println(value + " not found within list.");
