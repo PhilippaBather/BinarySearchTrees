@@ -8,14 +8,13 @@ public class Main {
        LinkedList list = new LinkedList();     // create 'linked list' to be populated
 
         String stringData = "Darwin Adelaide Atherton Canberra Perth Melbourne Canberra Adelaide Sydney Canberra";
-
         String[] data = stringData.split(" ");
         // create new item with value set to the string s
         for (String s : data) {
-            list.createNewItem(s);
+            list.addItem(s);
         }
 
-
+/*
         System.out.println();
         list.printLinkedList();
         System.out.println();
