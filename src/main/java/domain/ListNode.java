@@ -6,10 +6,6 @@ public class ListNode extends ListItem {
         super(value);
     }
 
-    public ListNode(ListItem next, ListItem previous, Object value) {
-        super(next, previous, value);
-    }
-
     @Override
     ListItem moveToNextItem() {
         return this.next;
@@ -38,30 +34,6 @@ public class ListNode extends ListItem {
             return ((String) super.getValue()).compareTo((String) item.getValue());
         } else {
             return -1;
-        }
-    }
-
-    public boolean removeNode(String item) {
-        return removeNode(this, item);
-    }
-
-    private boolean removeNode(ListNode currentNode, String item) {
-        if (item.compareTo((String) currentNode.value) < 0) {
-            return false;       // item not found
-        } else if (item.compareTo((String) currentNode.value) > 0) {
-            if (currentNode.next != null) {
-                return removeNode((ListNode) currentNode.next, item);
-            } else {
-                return false;   // item not found
-            }
-        } else {                // item found
-            if (currentNode.next != null) {
-                currentNode.value = currentNode.moveToNextItem().value;
-                currentNode.next = currentNode.moveToNextItem().next;
-            } else {
-                currentNode.moveToPreviousItem().setNextItem(null);
-            }
-            return true;
         }
     }
 }

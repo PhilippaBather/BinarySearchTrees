@@ -1,5 +1,8 @@
 package domain;
 
+/**
+ * Class to create a LinkedList object of String values ordered alphabetically.
+ */
 public class LinkedList {
 
     // member fields

@@ -21,6 +21,12 @@ public class BinarySearchTree {
         return true;
     }
 
+    /**
+     * Method adds a new node recursively to the list.
+     * @param currentNode traversal node
+     * @param value of String to be added to a new node
+     * @return boolean
+     */
     private boolean addRecursively(BSTNode currentNode, String value) {
         if (value.compareTo((String) currentNode.getValue()) < 0) {
                 if (currentNode.previous == null) {
@@ -41,6 +47,7 @@ public class BinarySearchTree {
         return false;
     }
 
+    // TODO finish
     public boolean removeNode(String value) {
 
         if (this.root == null) {
@@ -51,8 +58,14 @@ public class BinarySearchTree {
         }
     }
 
-    public boolean findNode(BSTNode root, String value) {
-        BSTNode itemSearched = search(root, value);
+    /**
+     * Public facing method that handles
+     * @param root head of Binary Search Tree
+     * @param value to be searched for
+     * @return
+     */
+    public boolean findNode(String value) {
+        BSTNode itemSearched = search(root, value);                 // search from root     // TODO check functioning
 
         if (itemSearched == null) {
             System.out.println(value + " not found within list.");
@@ -63,6 +76,13 @@ public class BinarySearchTree {
         }
     }
 
+    /**
+     * Recursive method that searches for a node whose value matches a given
+     * String value.
+     * @param currentNode traversal node
+     * @param value of String to be matched
+     * @return BST Node to caller method.
+     */
     private BSTNode search(BSTNode currentNode, String value) {
         if (currentNode == null || currentNode.value.equals(value)) {
             return currentNode;
@@ -75,10 +95,19 @@ public class BinarySearchTree {
         return search((BSTNode) currentNode.next, value);
     }
 
+    /**
+     * Public facing method to accessing private inOrder method.
+     * Method invoked prints the Binary Search Tree in order.
+     */
     public void inOrder() {
         inOrder(root);
     }
 
+    /**
+     * Recursive method that prints the Binary Search Tree
+     * in alphabetical order to the console.
+     * @param node
+     */
     private void inOrder(BSTNode node) {
         if (node == null) {
             return;
