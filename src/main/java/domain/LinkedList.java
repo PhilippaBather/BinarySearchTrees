@@ -50,18 +50,19 @@ public class LinkedList {
     /*
     public boolean remove(String item) {
         return head.removeNode(item);
-    }
+    } */
 
     public void printLinkedList() {
+        ListItem traversal = this.head;
         boolean exit = false;
         while (!exit) {
-            System.out.println(head.getValue());
-            if (head.next != null) {
-                head = (ListNode) head.moveToNextItem();
+            System.out.println(traversal.getValue());
+            if (traversal.next != null) {
+                traversal = traversal.moveToNextItem();
             } else {
                 exit = true;
             }
         }
-        head = returnToHead();
-    } */
+        //head = returnToHead();
+    }
 }

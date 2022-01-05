@@ -14,11 +14,11 @@ public class Main {
             list.addItem(s);
         }
 
-/*
         System.out.println();
         list.printLinkedList();
         System.out.println();
 
+        /*
         System.out.println(list.remove("Sydney") ? "Item removed" :"Item not found");
         System.out.println();
         list.printLinkedList();
